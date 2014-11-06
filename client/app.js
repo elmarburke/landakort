@@ -9,8 +9,6 @@ var MainView = require('./views/main');
 var Me = require('./models/me');
 var domReady = require('domready');
 
-var fiveHundredPx = require('./libs/500px');
-
 module.exports = {
     // this is the the whole app initter
     blastoff: function () {
@@ -18,9 +16,6 @@ module.exports = {
 
         // create our global 'me' object and an empty collection for our people models.
         window.me = new Me();
-        fiveHundredPx.init({
-            sdk_key: 'f9192fa878806b06d910bbf756cb39cea151486e'
-        });
 
         // init our URL handlers and the history tracker
         this.router = new Router();
