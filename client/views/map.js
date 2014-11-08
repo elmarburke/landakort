@@ -1,3 +1,4 @@
+/*global me, app*/
 var View = require('ampersand-view');
 var template = require('../templates/map.jade');
 var L = require('leaflet');
@@ -44,7 +45,10 @@ module.exports = View.extend({
     return this;
   },
   initialize: function() {
-    this.collection = new Photos();
+    var photos = new Photos();
+    this.collection = photos;
+    app.photos = photos;
     this.collection.fetch({data: {geo: '51.7835,6.1505,5km', rrp: 100}});
+    return this;
   }
 });

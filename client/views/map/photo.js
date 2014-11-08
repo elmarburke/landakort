@@ -9,13 +9,12 @@ module.exports = View.extend({
 
     this.icon = L.divIcon({
       iconSize: 140,
+      className: '',
       html: _.template(this.template)(this)
     });
 
-    this.marker = L.marker([this.model.latitude, this.model.longitude], {icon: this.icon})
+    this.marker = L.marker([this.model.latitude, this.model.longitude], { icon: this.icon })
       .addTo(this.map);
-
-    console.log(this.icon, this.marker);
 
     return this;
   },

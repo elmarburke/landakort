@@ -1,8 +1,11 @@
 // Photo Model - photo.js
 var AmpModel = require('ampersand-model');
+var PhotoCollection = require('./photo-collection');
 var User = require('./user');
+var _500pxMixin = require('./500px-mixin');
 
 module.exports = AmpModel.extend({
+    collection: PhotoCollection,
     props: {
         aperture: ['string'],
         camera: ['string'],
