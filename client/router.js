@@ -3,7 +3,6 @@ var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
 var Photo = window.Photo = require('./models/photo');
 var photo = new Photo({id: 123});
-console.log(photo.url, photo.save);
 
 module.exports = Router.extend({
   routes: {

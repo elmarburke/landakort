@@ -2,6 +2,7 @@
 
 var PageView = require('./base');
 var template = require('../templates/pages/photo.jade');
+
 module.exports = PageView.extend({
     pageTitle: 'home',
     template: template,

@@ -7,7 +7,6 @@ module.exports = AmpCollection.extend({
   model: Photo,
   url: 'https://api.500px.com/v1/photos/search?consumer_key='+_500pxMixin.consumerKey,
   parse: function (attrs) {
-    attrs = attrs.photos;
-    return attrs;
+    return attrs.photos;
   }
 });

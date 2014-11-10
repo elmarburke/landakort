@@ -20,8 +20,14 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
-    // new webpack.optimize.DedupePlugin()
-  ]
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin()
+  ],
+  devtool: 'source-map',
+  devServer: {
+    plugins: [],
+    devtool: 'eval-source-map',
+    debug: true
+  }
 
 };
