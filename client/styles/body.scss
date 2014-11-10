@@ -17,6 +17,10 @@ html {
     flex: 2;
 }
 
+[data-hook="images"] {
+    flex: .5
+}
+
 main {
     flex: 1;
 }

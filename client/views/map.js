@@ -11,10 +11,10 @@ var MapPhotosView = require('./map/photo');
 module.exports = View.extend({
   template: template,
   render: function() {
+    var _this = this;
     this.renderWithTemplate(this);
 
     if(!this.map) {
-
       this.map = new L.map(this.el, {
         center: [51.7835, 6.1505],
         zoom: 13
@@ -30,6 +30,11 @@ module.exports = View.extend({
         attribution: '<a href="http://geodienste.lyrk.de/copyright" target="_blank">Lizenzinformationen</a>, Tiles by <a href="http://geodienste.lyrk.de/" target="_blank">Lyrk</a>',
         maxZoom: 18
       }).addTo(this.map);
+
+      this.map.on('moveend', function() {
+        _this.loadImages.call(_this);
+      });
+      this.loadImages();
     }
 
     var element = document.createElement('div');
@@ -48,7 +53,18 @@ module.exports = View.extend({
     var photos = new Photos();
     this.collection = photos;
     app.photos = photos;
-    this.collection.fetch({data: {geo: '51.7835,6.1505,5km', rrp: 100}});
     return this;
-  }
+  },
+  loadImages: function() {
+    var bounds = this.map.getBounds();
+    var southWest = bounds.getSouthWest();
+    var northEast = bounds.getNorthEast();
+
+    var radius = southWest.distanceTo(northEast) / 2 / 1000;
+    var center = this.map.getCenter();
+
+    var geo = [center.lat, center.lng, radius + 'km'].join(',');
+
+    this.collection.fetch({data: {geo: geo, rrp: 100}});
+    }
 });

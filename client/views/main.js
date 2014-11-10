@@ -55,7 +55,10 @@ module.exports = View.extend({
       map: {
         hook: 'map',
         constructor: MapView
-      }
+      },
+      // images: {
+      //   hook: 'images',
+      // }
     },
 
     handleNewPage: function (view) {

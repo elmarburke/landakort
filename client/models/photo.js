@@ -4,7 +4,7 @@ var User = require('./user');
 var _500pxMixin = require('./500px-mixin');
 
 module.exports = AmpModel.extend({
-    urlRoot: '/example.com',
+    urlRoot: 'http://example.com',
     props: {
         aperture: ['string'],
         camera: ['string'],

@@ -6,7 +6,7 @@ module.exports = View.extend({
   template: '<img src="<%= model.image_url %>">',
   render: function() {
     this.renderWithTemplate(this);
-
+    
     this.icon = L.divIcon({
       iconSize: 140,
       className: '',
@@ -17,6 +17,9 @@ module.exports = View.extend({
       .addTo(this.map);
 
     return this;
+  },
+  remove: function() {
+    this.map.removeLayer(this.marker);
   },
   initialize: function(options) {
     this.map = options.map;

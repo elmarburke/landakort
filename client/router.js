@@ -1,7 +1,7 @@
 /*global me, app*/
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
-var Photo = window.Photo = require('./models/photo');
+var Photo = require('./models/photo');
 var photo = new Photo({id: 123});
 
 module.exports = Router.extend({
