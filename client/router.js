@@ -1,8 +1,7 @@
 /*global me, app*/
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
-var Photo = require('./models/photo');
-var photo = new Photo({id: 123});
+var PhotoPage = require('./pages/photo');
 
 module.exports = Router.extend({
   routes: {
@@ -22,9 +21,9 @@ module.exports = Router.extend({
   photo: function photo(photoId) {
     photoId = parseInt(photoId, 10);
     
-    app.photos.getOrFetch(photoId, function(err, photo) {
-      console.log(err, photo);
-    });
+    this.trigger('page', new PhotoPage({
+      id: photoId,
+    }));
   },
 
   '500pxCallback': function (token, callback) {

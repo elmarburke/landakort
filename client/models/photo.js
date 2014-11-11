@@ -2,16 +2,30 @@
 var AmpModel = require('ampersand-model');
 var User = require('./user');
 var _500pxMixin = require('./500px-mixin');
+var _ = require('underscore');
 
 module.exports = AmpModel.extend({
-    urlRoot: 'http://example.com',
+    urlRoot: 'https://api.500px.com/v1/photos/',
+    ajaxConfig: {
+        beforeSend: function(xhr) {
+            var url = xhr.url + '?consumer_key=' + _500pxMixin.consumerKey;
+            xhr.open(xhr.method, url);
+        },
+        xhrFields: {}
+    },
+    parse: function (attrs) {
+        if(_.isObject(attrs.photo)) {
+            return attrs.photo;
+        }
+        return attrs;
+    },
     props: {
         aperture: ['string'],
         camera: ['string'],
         category: ['number'],
         collections_count: ['number'],
         comments_count: ['number'],
-        converted: ['number'],
+        converted: ['any'],
         converted_bits: ['number'],
         created_at: ['string'],
         crop_version: ['number'],
@@ -44,7 +58,7 @@ module.exports = AmpModel.extend({
         status: ['number'],
         taken_at: ['string'],
         times_viewed: ['number'],
-        url: ['string'],
+        // url: ['string'],
         user: ['object'],
         user_id: ['number'],
         votes_count: ['number'],

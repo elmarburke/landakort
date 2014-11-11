@@ -5,13 +5,12 @@ var L = require('leaflet');
 var _ = require('underscore');
 require('leaflet/dist/leaflet.css');
 
-var Photos = require('../models/photo-collection');
 var MapPhotosView = require('./map/photo');
 
 module.exports = View.extend({
   template: template,
   render: function() {
-    var _this = this;
+    var self = this;
     this.renderWithTemplate(this);
 
     if(!this.map) {
@@ -32,27 +31,28 @@ module.exports = View.extend({
       }).addTo(this.map);
 
       this.map.on('moveend', function() {
-        _this.loadImages.call(_this);
+        self.loadImages.call(self);
       });
+
       this.loadImages();
     }
 
     var element = document.createElement('div');
+
     var filterGeo = function(photo) {
       return _.isNumber(photo.longitude) && _.isNumber(photo.latitude);
     };
-    var collectionView = this
-      .renderCollection(this.collection, MapPhotosView, element, {
-        viewOptions: {map: this.map},
-        filter: filterGeo
-      });
 
+    var collectionView = this.renderCollection(self.collection, 
+                            MapPhotosView, element, {
+                              viewOptions: {map: this.map},
+                              filter: filterGeo
+                            });
+    
     return this;
   },
   initialize: function() {
-    var photos = new Photos();
-    this.collection = photos;
-    app.photos = photos;
+    this.collection = app.photos;
     return this;
   },
   loadImages: function() {
@@ -66,5 +66,5 @@ module.exports = View.extend({
     var geo = [center.lat, center.lng, radius + 'km'].join(',');
 
     this.collection.fetch({data: {geo: geo, rrp: 100}});
-    }
+  }
 });

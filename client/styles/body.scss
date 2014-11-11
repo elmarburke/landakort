@@ -17,8 +17,19 @@ html {
     flex: 2;
 }
 
-[data-hook="images"] {
-    flex: .5
+#photos {
+    margin: 0;
+    padding: 0;
+    // flex: .5;
+    height: 100%;
+    overflow: scroll;
+    list-style: none;
+    li {
+        padding: 0;
+    }
+    img {
+        max-width: 75px;
+    }
 }
 
 main {

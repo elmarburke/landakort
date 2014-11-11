@@ -7,6 +7,7 @@ var Router = require('./router');
 var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
 var Me = require('./models/me');
+var Photos = require('./models/photo-collection');
 var domReady = require('domready');
 
 module.exports = {
@@ -16,7 +17,8 @@ module.exports = {
 
         // create our global 'me' object and an empty collection for our people models.
         window.me = new Me();
-
+        app.photos = new Photos();
+        
         // init our URL handlers and the history tracker
         this.router = new Router();
 

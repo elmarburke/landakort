@@ -11,6 +11,7 @@ var dom = require('ampersand-dom');
 var tracking = require('../helpers/metrics');
 var setFavicon = require('favicon-setter');
 var MapView = require('./map');
+var PhotosView = require('./photos');
 
 require('../styles/body.scss');
 
@@ -56,9 +57,10 @@ module.exports = View.extend({
         hook: 'map',
         constructor: MapView
       },
-      // images: {
-      //   hook: 'images',
-      // }
+      photos: {
+        hook: 'photos',
+        constructor: PhotosView
+      }
     },
 
     handleNewPage: function (view) {
