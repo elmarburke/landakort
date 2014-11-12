@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var AppCachePlugin = require('appcache-webpack-plugin');
 
 module.exports = {
   entry: './client/app.js',
@@ -20,8 +21,11 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
-    // new webpack.optimize.DedupePlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new AppCachePlugin({
+      network: ['manifest.appcache', 'bundle.js.map']
+    })
   ],
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
 };
