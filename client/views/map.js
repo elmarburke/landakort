@@ -48,6 +48,11 @@ module.exports = View.extend({
                               viewOptions: {map: this.map},
                               filter: filterGeo
                             });
+
+    app.router.on('route:photo', function(id) {
+      var photo = app.photos.get(id);
+      self.map.setView([photo.latitude, photo.longitude], 18);
+    });
     
     return this;
   },
