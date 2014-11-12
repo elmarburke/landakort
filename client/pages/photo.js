@@ -11,11 +11,18 @@ module.exports = PageView.extend({
         type: 'text',
         hook: 'id'
       },
+      'model.page_url': {
+        type: 'attribute',
+        hook: 'photo-page',
+        name: 'href'
+      },
       'model.image_url': {
         type: 'attribute',
         hook: 'photo',
         name: 'src'
-      }
+      },
+      'model.rating': { hook: 'rating' },
+      'model.highest_rating': { hook: 'highest-rating' }
     },
     initialize: function(spec) {
       var self = this;

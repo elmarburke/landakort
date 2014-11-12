@@ -15,8 +15,11 @@ module.exports = AmpModel.extend({
     },
     parse: function (attrs) {
         if(_.isObject(attrs.photo)) {
-            return attrs.photo;
+            attrs = attrs.photo;
         }
+        attrs.page_url = 'https://500px.com' + attrs.url;
+        delete attrs.url;
+        
         return attrs;
     },
     props: {
@@ -58,7 +61,7 @@ module.exports = AmpModel.extend({
         status: ['number'],
         taken_at: ['string'],
         times_viewed: ['number'],
-        // url: ['string'],
+        page_url: ['string'],
         user: ['object'],
         user_id: ['number'],
         votes_count: ['number'],

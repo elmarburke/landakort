@@ -3,7 +3,7 @@ var L = require('leaflet');
 var _ = require('underscore');
 
 module.exports = View.extend({
-  template: '<img src="<%= model.image_url %>">',
+  template: '<a href="<%= imageUrl %>"><img src="<%= model.image_url %>"></a>',
   render: function() {
     this.renderWithTemplate(this);
     
@@ -23,5 +23,13 @@ module.exports = View.extend({
   },
   initialize: function(options) {
     this.map = options.map;
+  },
+  derived: {
+    imageUrl: {
+      deps: ['model.id'],
+      fn: function() {
+        return '#/i' + this.model.id;
+      }
+    }
   }
 });

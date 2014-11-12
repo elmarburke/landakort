@@ -1,5 +1,13 @@
-div
+section.page.photo
     a(href="#/") Back to the overview
     h1 This is an Image view with the ID: 
         span(data-hook="id")
-    img(data-hook="photo")
+    a(data-hook="photo-page" target="_blank")
+        img(data-hook="photo")
+    dl
+        dt Rating
+        dd
+            span(data-hook="highest-rating")
+            |  (
+            span(data-hook="rating")
+            | )
