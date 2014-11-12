@@ -22,6 +22,7 @@ html {
     padding: 0;
     overflow: scroll;
     overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
     list-style: none;
     li {
         padding: 0;
