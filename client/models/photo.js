@@ -4,6 +4,10 @@ var User = require('./user');
 var _500pxMixin = require('./500px-mixin');
 var _ = require('underscore');
 
+function replaceImageTypeWith(imageUrl, imageType) {
+    return imageUrl.replace(/(\/)\d(\.jpg)(\?v=\d+)?$/, '$1' + imageType + '$2$3');
+}
+
 module.exports = AmpModel.extend({
     urlRoot: 'https://api.500px.com/v1/photos/',
     ajaxConfig: {
@@ -19,7 +23,7 @@ module.exports = AmpModel.extend({
         }
         attrs.page_url = 'https://500px.com' + attrs.url;
         delete attrs.url;
-        
+
         return attrs;
     },
     props: {
@@ -62,12 +66,25 @@ module.exports = AmpModel.extend({
         taken_at: ['string'],
         times_viewed: ['number'],
         page_url: ['string'],
-        user: ['object'],
         user_id: ['number'],
         votes_count: ['number'],
         width: ['number']
     },
     children: {
         user: User
+    },
+    derived: {
+        thumbnail_image_url: {
+            deps: ['image_url'],
+            fn: function() {
+                return replaceImageTypeWith(this.image_url, 1);
+            }
+        },
+        big_image_url: {
+            deps: ['image_url'],
+            fn: function() {
+                return replaceImageTypeWith(this.image_url, 4);
+            }
+        }
     }
 });

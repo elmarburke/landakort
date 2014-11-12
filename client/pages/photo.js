@@ -7,16 +7,40 @@ module.exports = PageView.extend({
     pageTitle: 'home',
     template: template,
     bindings: {
-      'model.id': {
-        type: 'text',
-        hook: 'id'
+      'model.user.profile_url': [{
+          type: 'attribute',
+          hook: 'profile-name',
+          name: 'href'
+        }, {
+          type: 'attribute',
+          hook: 'profile-image-link',
+          name: 'href'
+        }],
+      'model.user.fullname': {
+        hook: 'profile-name'
       },
-      'model.page_url': {
+      'model.user.userpic_url': {
         type: 'attribute',
-        hook: 'photo-page',
-        name: 'href'
+        hook: 'profile-image',
+        name: 'src'
       },
-      'model.image_url': {
+      'model.name': [{
+          hook: 'image-title'
+        }, {
+          type: 'attribute',
+          hook: 'image-title',
+          name: 'title'
+        }],
+      'model.page_url': [{
+          type: 'attribute',
+          hook: 'photo-page',
+          name: 'href'
+        }, {
+          type: 'attribute',
+          hook: 'image-title',
+          name: 'href'
+        }],
+      'model.big_image_url': {
         type: 'attribute',
         hook: 'photo',
         name: 'src'

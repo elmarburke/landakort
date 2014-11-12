@@ -65,6 +65,6 @@ module.exports = View.extend({
 
     var geo = [center.lat, center.lng, radius + 'km'].join(',');
 
-    this.collection.fetch({data: {geo: geo, rpp: 100}});
+    this.collection.fetch({data: {geo: geo, rpp: 40}});
   }
 });

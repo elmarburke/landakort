@@ -25,11 +25,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new AppCachePlugin({
-      network: ['manifest.appcache', 'bundle.js.map']
-    })
+    
   ],
-  devtool: 'source-map'
+  devtools: 'source-map'
 };

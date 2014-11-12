@@ -1,10 +1,10 @@
 var View = require('ampersand-view');
-
+require('../styles/photo.scss');
 
 module.exports = View.extend({
     template: '<li><a><img data-hook="previewImage"></a></li>',
     bindings: {
-      'model.image_url': {
+      'model.thumbnail_image_url': {
         type: 'attribute',
         hook: 'previewImage',
         name: 'src'

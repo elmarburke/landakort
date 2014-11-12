@@ -17,5 +17,13 @@ module.exports = AmpModel.extend({
         userpic_https_url: ['string'],
         userpic_url: ['string'],
         usertype: ['number']
+    },
+    derived: {
+        profile_url: {
+            deps: ['username'],
+            fn: function() {
+                return 'https://500px.com/' + this.username;
+            }
+        }
     }
 });

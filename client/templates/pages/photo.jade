@@ -1,9 +1,18 @@
 section.page.photo
-    a(href="#/") Back to the overview
-    h1 This is an Image view with the ID: 
-        span(data-hook="id")
-    a(data-hook="photo-page" target="_blank")
-        img(data-hook="photo")
+    header
+        a(href="#/").back
+            span.fa.fa-chevron-left
+        div.title
+            h1
+                a(data-hook="image-title" target="_blank")
+            h2
+                a(data-hook="profile-name" target="_blank")
+        a(data-hook="profile-image-link" target="_blank")
+            img(data-hook="profile-image")
+
+    div.photo
+        a(data-hook="photo-page" target="_blank")
+            img(data-hook="photo")
     dl
         dt Rating
         dd

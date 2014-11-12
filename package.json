@@ -3,7 +3,8 @@
   "author": "Elmar Burke",
   "version": "0.0.0",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --config webpack-dev.config.js",
+    "build": "webpack"
   },
   "dependencies": {
     "ampersand-dom": "^1.2.1",
@@ -22,6 +23,7 @@
     "domready": "^1.0.5",
     "favicon-setter": "^0.1.1",
     "file-loader": "^0.8.1",
+    "font-awesome": "^4.2.0",
     "getconfig": "^0.3.0",
     "leaflet": "^0.7.3",
     "stylizer": "^1.0.0",

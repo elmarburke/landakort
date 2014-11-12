@@ -3,12 +3,12 @@ var L = require('leaflet');
 var _ = require('underscore');
 
 module.exports = View.extend({
-  template: '<a href="<%= imageUrl %>"><img src="<%= model.image_url %>"></a>',
+  template: '<a href="<%= imageUrl %>"><img src="<%= model.thumbnail_image_url %>"></a>',
   render: function() {
     this.renderWithTemplate(this);
     
     this.icon = L.divIcon({
-      iconSize: 140,
+      iconSize: 75,
       className: '',
       html: _.template(this.template)(this)
     });

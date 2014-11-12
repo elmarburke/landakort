@@ -1,7 +1,5 @@
 /*global me, app*/
 var Router = require('ampersand-router');
-var HomePage = require('./pages/home');
-var PhotoPage = require('./pages/photo');
 
 module.exports = Router.extend({
   routes: {
@@ -13,17 +11,28 @@ module.exports = Router.extend({
 
   // ------- ROUTE HANDLERS ---------
   home: function () {
-    this.trigger('page', new HomePage({
-      model: me
-    }));
+    var self = this;
+
+    require.ensure([], function() {
+      var HomePage = require('./pages/home');
+
+      self.trigger('page', new HomePage({
+        model: me
+      }));
+    });
   },
 
   photo: function photo(photoId) {
+    var self = this;
     photoId = parseInt(photoId, 10);
-    
-    this.trigger('page', new PhotoPage({
-      id: photoId,
-    }));
+
+    require.ensure([], function() {
+      var PhotoPage = require('./pages/photo');
+
+      self.trigger('page', new PhotoPage({
+        id: photoId,
+      }));
+    });
   },
 
   '500pxCallback': function (token, callback) {

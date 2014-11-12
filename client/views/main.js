@@ -14,6 +14,7 @@ var MapView = require('./map');
 var PhotosView = require('./photos');
 
 require('../styles/body.scss');
+require('font-awesome/scss/font-awesome.scss');
 
 module.exports = View.extend({
     template: require('../templates/body.jade'),

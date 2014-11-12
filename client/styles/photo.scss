@@ -1,0 +1,56 @@
+@import '_variables.scss';
+
+section.page.photo {
+	display: flex;
+	flex-direction: column;
+	header {
+		flex: 1;
+		display: flex;
+		height: 50px;
+		padding: 20px 0 30px 0;
+		background-color: $dark-gray;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+		color: $dark-white;
+		font-weight: bold;
+		font-size: 26px;
+
+		.title {
+			flex: 1;
+			h1, h2 {
+				margin: 0;
+				text-align: right;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			h1 {
+				font-size: 24px;
+			}
+
+			h2 {
+				font-size: 18px;
+			}
+		}
+
+		img {
+			max-height: 50px;
+			margin: 0 10px 0 10px;
+		}
+
+		a {
+			color: $dark-white;
+			text-decoration: none;
+			&.back {
+				margin: 10px;
+				margin-right: 10px;
+			}
+		}
+
+	}
+	.photo {
+		flex: 1;
+		img {
+			max-width: 100%;
+		}
+	}
+}
