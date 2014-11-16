@@ -51,7 +51,7 @@ module.exports = View.extend({
 
     app.router.on('route:photo', function(id) {
       var photo = app.photos.get(id);
-      self.map.setView([photo.latitude, photo.longitude], 18);
+      self.map.panTo([photo.latitude, photo.longitude]);
     });
     
     return this;
