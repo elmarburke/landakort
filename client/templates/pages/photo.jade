@@ -11,12 +11,12 @@ section.page.photo-page
             img(data-hook="profile-image")
 
     div.photo
-        a(data-hook="photo-page" target="_blank")
-            img(data-hook="photo")
-    //- dl
-    //-     dt Rating
-    //-     dd
-    //-         span(data-hook="highest-rating")
-    //-         |  (
-    //-         span(data-hook="rating")
-    //-         | )
+        div.image
+            a(data-hook="photo-page" target="_blank")
+                img(data-hook="photo")
+                dl
+                    dt Rating
+                    dd
+                        span(data-hook="rating")
+                        | &nbsp;
+                        span(data-hook="highest-rating")
